@@ -1,0 +1,25 @@
+{
+  "family": "sight-reverse-proxy",
+  "networkMode": "bridge",
+  "cpu": "256",
+  "memory": "512",
+  "containerDefinitions": [
+    {
+      "name": "sight-reverse-proxy",
+      "image": "ghcr.io/khu-khlug/sight-reverse-proxy:latest",
+      "essential": true,
+      "portMappings": [
+        { "containerPort": 80, "hostPort": 80, "protocol": "tcp" },
+        { "containerPort": 443, "hostPort": 443, "protocol": "tcp" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/sight-reverse-proxy",
+          "awslogs-region": "ap-northeast-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
