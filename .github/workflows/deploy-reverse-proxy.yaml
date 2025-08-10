@@ -1,0 +1,43 @@
+name: Deploy Reverse Proxy Image
+
+on:
+  workflow_dispatch:
+
+env:
+  CLUSTER: "sight-cluster"
+  REGION: "ap-northeast-2"
+  SERVICE: "sight-reverse-proxy"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.REGION }}
+
+      - name: Force new deployment (pull :latest on new tasks)
+        run: |
+          aws ecs update-service \
+            --cluster "${{ env.CLUSTER }}" \
+            --service "${{ env.SERVICE }}" \
+            --force-new-deployment \
+            --region "${{ env.REGION }}"
+
+      - name: Wait for service stability
+        run: |
+          aws ecs wait services-stable \
+            --cluster "${{ env.CLUSTER }}" \
+            --services "${{ env.SERVICE }}" \
+            --region "${{ env.REGION }}"
+          echo "Service stable."
