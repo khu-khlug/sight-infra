@@ -1,6 +1,6 @@
 FROM nginx:1.28-alpine
 
-RUN apk add --no-cache certbot certbot-nginx bash curl crond
+RUN apk update && apk add --no-cache certbot certbot-nginx bash curl
 
 # HTTPS 포함 nginx.conf 복사
 COPY ./nginx.conf /etc/nginx/nginx.conf

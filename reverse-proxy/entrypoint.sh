@@ -17,8 +17,5 @@ else
     echo ">>> Certificate already exists. Skipping issuance."
 fi
 
-# cron 시작 (갱신)
-crond
-
 # nginx 포그라운드 유지
 nginx -g 'daemon off;'
