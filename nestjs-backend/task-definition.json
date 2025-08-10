@@ -1,0 +1,82 @@
+{
+  "family": "sight-nestjs-backend",
+  "networkMode": "bridge",
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::430044730206:role/ecs-service-parameter-reader-role",
+  "containerDefinitions": [
+    {
+      "name": "sight-nestjs-backend",
+      "image": "ghcr.io/khu-khlug/sight-nestjs-backend:latest",
+      "essential": true,
+      "portMappings": [
+        { "containerPort": 3000, "hostPort": 3000, "protocol": "tcp" }
+      ],
+      "environment": [
+        { "name": "NODE_ENV", "value": "production" },
+        { "name": "PORT", "value": "3000" },
+
+        { "name": "DATABASE_PORT", "value": "3306" },
+        { "name": "DATABASE_NAME", "value": "sight" },
+
+        { "name": "DISCORD_BASE_URL", "value": "https://discord.com/api/v10" },
+        {
+          "name": "DISCORD_REDIRECT_URL",
+          "value": "https://api.khlug.org/users/@me/discord-integration/callback"
+        },
+
+        { "name": "KHLUG_DISCORD_GUILD_ID", "value": "1343604778059694122" },
+        { "name": "MEMBER_DISCORD_ROLE_ID", "value": "1343608459278549044" },
+        {
+          "name": "GRADUATED_MEMBER_DISCORD_ROLE_ID",
+          "value": "1343608799214309528"
+        },
+        { "name": "MANAGER_DISCORD_ROLE_ID", "value": "1343605140095111198" }
+      ],
+      "secrets": [
+        {
+          "name": "INTERNAL_API_KEY",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/nestjs/internal-api-key"
+        },
+
+        {
+          "name": "DATABASE_HOST",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/nestjs/database-host"
+        },
+        {
+          "name": "DATABASE_USER",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/nestjs/database-user"
+        },
+        {
+          "name": "DATABASE_PASSWORD",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/nestjs/database-password"
+        },
+
+        {
+          "name": "DISCORD_CLIENT_ID",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/nestjs/discord-client-id"
+        },
+        {
+          "name": "DISCORD_CLIENT_SECRET",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/nestjs/discord-client-secret"
+        },
+        {
+          "name": "DISCORD_STATE_SECRET",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/nestjs/discord-state-secret"
+        },
+        {
+          "name": "DISCORD_BOT_TOKEN",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/nestjs/discord-bot-token"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/sight-nestjs-backend",
+          "awslogs-region": "ap-northeast-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}

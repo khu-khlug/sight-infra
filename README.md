@@ -26,8 +26,10 @@ flowchart LR
 
 ```
 sight-infra/
+├── nestjs-backend/
 ├── reverse-proxy/
 └── README.md
 ```
 
+- `nestjs-backend`: NestJS 백엔드입니다. 주로 디스코드 관련 요청을 처리합니다. 자세한 내용은 [README](./nestjs-backend/README.md)를 참고해주세요.
 - `reverse-proxy`: 인프라의 가장 앞단에서 요청을 최초로 받는 곳입니다. SSL Termination 및 `Host`에 따른 트래픽 라우팅을 수행합니다. 자세한 내용은 [README](./reverse-proxy/README.md)를 참고해주세요.

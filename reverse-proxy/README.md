@@ -6,6 +6,7 @@
 
 ```
 sight-infra/reverse-proxy/
+├── create-service.sh
 ├── crontab.txt
 ├── Dockerfile
 ├── entrypoint.sh
@@ -15,6 +16,7 @@ sight-infra/reverse-proxy/
 └── task-definition.json
 ```
 
+- `create-service.sh`: 최초에 서비스를 생성하는 스크립트
 - `crontab.txt`: cron 기반 certbot 자동 갱신 스크립트
 - `Dockerfile`: nginx reverse proxy 컨테이너 이미지를 생성하는 Dockerfile
 - `entrypoint.sh`: nginx 컨테이너가 켜지면 실행될 스크립트, 최초 인증서 발급을 처리합니다.
