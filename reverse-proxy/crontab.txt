@@ -1,0 +1,1 @@
+0 3 * * * certbot renew --quiet --nginx && nginx -s reload
