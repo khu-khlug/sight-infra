@@ -16,6 +16,8 @@
         { "name": "NODE_ENV", "value": "production" },
         { "name": "PORT", "value": "3000" },
 
+        { "name": "AUTH_SERVICE_ENDPOINT", "value": "https://khlug.org" },
+
         { "name": "DATABASE_PORT", "value": "3306" },
         { "name": "DATABASE_NAME", "value": "sight" },
 
@@ -35,7 +37,7 @@
       ],
       "secrets": [
         {
-          "name": "INTERNAL_API_KEY",
+          "name": "AUTH_SERVICE_API_KEY",
           "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/nestjs/internal-api-key"
         },
 
