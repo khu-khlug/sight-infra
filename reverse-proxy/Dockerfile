@@ -11,7 +11,7 @@ RUN chmod +x /entrypoint.sh
 COPY ./crontab.txt /etc/crontabs/root
 
 # Let's Encrypt 인증서 대상 설정
-ENV DOMAINS="api.khlug.org"
+ENV DOMAINS="api-v2.khlug.org"
 ENV EMAIL=we_are@khlug.org
 
 EXPOSE 80 443
