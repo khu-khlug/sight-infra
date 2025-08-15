@@ -1,4 +1,4 @@
-http://api-v2.khlug.org {
+api.khlug.org {
 	reverse_proxy {
 		dynamic srv {
 			name nestjs-backend.sight.prod
