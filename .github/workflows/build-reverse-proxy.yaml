@@ -2,6 +2,13 @@ name: Build Reverse Proxy Image
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "reverse-proxy/**"
+      - "!reverse-proxy/**/*.md"
+      - "!reverse-proxy/task-definition.json"
 
 env:
   REGISTRY: ghcr.io
