@@ -1,11 +1,3 @@
-api-v2.khlug.org {
-    reverse_proxy @backend {
-        forward_proxy {
-            probe_disable true
-        }
-
-        srv nestjs-backend.sight.prod
-    }
-    
-    tls none
+http://api-v2.khlug.org {
+    reverse_proxy srv+nestjs-backend.sight.prod
 }

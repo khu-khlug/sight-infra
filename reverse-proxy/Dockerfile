@@ -1,4 +1,4 @@
-FROM caddy:2.10.0-alpine
+FROM caddy:2.9.1-alpine
 
 COPY Caddyfile /etc/caddy/Caddyfile
 EXPOSE 80 443
