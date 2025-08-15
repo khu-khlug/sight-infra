@@ -6,3 +6,12 @@ api.khlug.org {
 		}
 	}
 }
+
+v2.khlug.org {
+	reverse_proxy {
+		dynamic srv {
+			name laravel-backend.sight.prod
+			refresh 10s
+		}
+	}
+}
