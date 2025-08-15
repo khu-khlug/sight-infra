@@ -1,11 +1,11 @@
-# nestjs-backend
+# laravel-backend
 
-Nestjs 백엔드입니다. 실제 코드는 [`khu-khlug/sight-backend`](https://github.com/khu-khlug/sight-backend) 레포지토리를 참고해주세요.
+Laravel 백엔드입니다. 실제 코드는 보안 상 이유로 인해 Private Repository로 운영하고 있으며, 운영진 외에는 볼 수 없습니다.
 
 ## 폴더 구조
 
 ```
-sight-infra/nestjs-backend/
+sight-infra/laravel-backend/
 ├── create-service.sh
 ├── README.md
 ├── register-task-definition.sh

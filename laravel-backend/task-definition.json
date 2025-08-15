@@ -1,0 +1,118 @@
+{
+  "family": "sight-laravel-backend",
+  "networkMode": "bridge",
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::430044730206:role/ecs-service-parameter-reader-role",
+  "containerDefinitions": [
+    {
+      "name": "sight-laravel-backend",
+      "image": "ghcr.io/khu-khlug/sight-laravel-backend:latest",
+      "essential": true,
+      "portMappings": [
+        { "containerPort": 80, "hostPort": 0, "protocol": "tcp" }
+      ],
+      "environment": [
+        { "name": "APP_DOMAIN", "value": "khlug.org" },
+        { "name": "APP_NAME", "value": "KHLUG" },
+        { "name": "APP_ENV", "value": "prod" },
+        { "name": "APP_DEBUG", "value": "false" },
+        { "name": "APP_LOG", "value": "daily" },
+        { "name": "APP_LOG_LEVEL", "value": "error" },
+        { "name": "APP_URL", "value": "https://khlug.org" },
+
+        { "name": "DB_CONNECTION", "value": "mysql" },
+        { "name": "DB_PORT", "value": "3306" },
+        { "name": "DB_DATABASE", "value": "sight" },
+
+        { "name": "BROADCAST_DRIVER", "value": "log" },
+        { "name": "CACHE_DRIVER", "value": "file" },
+        { "name": "QUEUE_DRIVER", "value": "sync" },
+
+        { "name": "SESSION_DRIVER", "value": "database" },
+        { "name": "SESSION_LIFETIME", "value": "120" },
+        { "name": "SESSION_DOMAIN", "value": ".khlug.org" },
+
+        { "name": "REDIS_HOST", "value": "127.0.0.1" },
+        { "name": "REDIS_PASSWORD", "value": "null" },
+        { "name": "REDIS_PORT", "value": "6379" },
+
+        { "name": "MAIL_DRIVER", "value": "smtp" },
+        { "name": "MAIL_PORT", "value": "587" },
+        { "name": "MAIL_FROM_ADDRESS", "value": "we_are@khlug.org" },
+        { "name": "MAIL_FROM_NAME", "value": "쿠러그" },
+
+        { "name": "PUSHER_APP_ID", "value": "" },
+        { "name": "PUSHER_APP_KEY", "value": "" },
+        { "name": "PUSHER_APP_SECRET", "value": "" },
+        { "name": "PUSHER_APP_CLUSTER", "value": "mt1" },
+
+        { "name": "R2_BUCKET", "value": "sight-universal" },
+
+        { "name": "FILESYSTEM_DRIVER", "value": "r2" },
+        { "name": "AWS_SUPPRESS_PHP_DEPRECATION_WARNING", "value": "true" }
+      ],
+      "secrets": [
+        {
+          "name": "APP_KEY",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/app-key"
+        },
+        {
+          "name": "SERVICE_API_KEY",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/service-api-key"
+        },
+
+        {
+          "name": "DB_HOST",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/db-host"
+        },
+        {
+          "name": "DB_USERNAME",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/db-username"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/db-password"
+        },
+
+        {
+          "name": "MAIL_HOST",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/mail-host"
+        },
+        {
+          "name": "MAIL_USERNAME",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/mail-username"
+        },
+        {
+          "name": "MAIL_PASSWORD",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/mail-password"
+        },
+        {
+          "name": "MAIL_ENCRYPTION",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/mail-encryption"
+        },
+
+        {
+          "name": "R2_ACCESS_KEY_ID",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/r2-access-key-id"
+        },
+        {
+          "name": "R2_SECRET_ACCESS_KEY",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/r2-secret-access-key"
+        },
+        {
+          "name": "R2_ENDPOINT",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/r2-endpoint"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/sight-laravel-backend",
+          "awslogs-region": "ap-northeast-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
