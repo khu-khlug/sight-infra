@@ -12,11 +12,18 @@
         "credentialsParameter": "arn:aws:secretsmanager:ap-northeast-2:430044730206:secret:ecs/github-credentials-vj2fdR"
       },
       "essential": true,
+      "healthCheck": {
+        "command": ["CMD-SHELL", "exit 0"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 1,
+        "startPeriod": 0
+      },
       "portMappings": [
         { "containerPort": 80, "hostPort": 0, "protocol": "tcp" }
       ],
       "environment": [
-        { "name": "APP_DOMAIN", "value": "khlug.org" },
+        { "name": "APP_DOMAIN", "value": "v2.khlug.org" },
         { "name": "APP_NAME", "value": "KHLUG" },
         { "name": "APP_ENV", "value": "prod" },
         { "name": "APP_DEBUG", "value": "false" },
