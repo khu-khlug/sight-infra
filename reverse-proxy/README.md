@@ -2,33 +2,35 @@
 
 인프라의 가장 앞단에서 요청을 최초로 받는 곳입니다. SSL Termination 및 `Host`에 따른 트래픽 라우팅을 수행합니다.
 
+## Caddy 사용
+
+본 리버스 프록시는 Golang 기반의 [Caddy](https://caddyserver.com/)를 사용하고 있습니다.
+
+일반적으로는 nginx를 사용하나, nginx가 SRV 레코드에 의한 라우팅을 기본적으로 제공하고 있지 않으며, https 인증서 발급을 수동으로 세팅해주어야 하는 등 운영 시 신경 써주어야 하는 부분이 여럿 존재하였기 때문에 Caddy를 활용하게 되었습니다.
+
 ## 폴더 구조
 
 ```
 sight-infra/reverse-proxy/
+├── Caddyfile
 ├── create-service.sh
-├── crontab.txt
 ├── Dockerfile
-├── entrypoint.sh
-├── nginx.conf
 ├── README.md
 ├── register-task-definition.sh
 └── task-definition.json
 ```
 
+- `Caddyfile`: Caddy 웹 서버에 대한 설정 파일
 - `create-service.sh`: 최초에 서비스를 생성하는 스크립트
-- `crontab.txt`: cron 기반 certbot 자동 갱신 스크립트
-- `Dockerfile`: nginx reverse proxy 컨테이너 이미지를 생성하는 Dockerfile
-- `entrypoint.sh`: nginx 컨테이너가 켜지면 실행될 스크립트, 최초 인증서 발급을 처리합니다.
-- `nginx.conf`: nginx 설정 파일, HTTPS 리다이렉트 및 SSL Termination에 대한 설정이 포함되어 있습니다.
+- `Dockerfile`: caddy reverse proxy 컨테이너 이미지를 생성하는 Dockerfile
 - `register-task-definition.sh`: 최초에 ECS에 task definition을 등록하기 위한 스크립트
-  - `task-definition.json`에서 `latest` 태그를 사용하고 있기 때문에 `task-definition.json`을 배포할 때 올리지 않습니다. 따라서 최초 한 번 `task-definition.json`을 등록해주어야 합니다.
 - `task-definition.json`: ECS task definition 파일
 
 ## 도메인 추가
 
 운영 중, 도메인을 추가해야 하는 경우 아래 프로세스를 따라주세요.
 
-1. [`entrypoint.sh`](./entrypoint.sh)의 `certbot` 명령어에 추가할 도메인을 옵션으로 넣어주세요.
-2. [`nginx.conf`](./nginx.conf)에 추가할 도메인과 뒷단 서버에 대한 정보를 `server` 블록으로 추가해주세요.
-3. 그런 다음 해당 `reverse-proxy` 컨테이너를 배포합니다.
+1. [`Caddyfile`](./Caddyfile)에 새로운 도메인과 프록시 대상 서버를 추가합니다.
+2. [리버스 프록시 빌드 액션](/.github/workflows/build-reverse-proxy.yaml)을 활용하여 이미지를 빌드합니다.
+3. [`register-task-definition.sh`](./register-task-definition.sh)를 사용하여 새로운 task definition을 생성합니다.
+4. AWS ECS 콘솔에서 새로 생성한 task definition을 적용하여 새 서비스를 띄웁니다.

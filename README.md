@@ -7,7 +7,7 @@
 ```mermaid
 flowchart LR
   client
-  reverse-proxy["nginx"]
+  reverse-proxy["caddy"]
   laravel-backend["라라벨 백엔드"]
   nestjs-backend["네스트 백엔드"]
   spring-backend["스프링 백엔드"]
