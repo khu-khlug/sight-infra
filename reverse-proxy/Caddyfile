@@ -4,7 +4,7 @@
 	# LetsEncrypt 테스트용 ACME CA
 	# 실제 배포 시 아래 라인을 주석 처리해주세요.
 	# @see https://caddyserver.com/docs/caddyfile/options#acme-ca
-	acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+	# acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
 }
 
 api.khlug.org {
