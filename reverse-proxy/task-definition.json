@@ -7,11 +7,17 @@
   "containerDefinitions": [
     {
       "name": "sight-reverse-proxy",
-      "image": "ghcr.io/khu-khlug/sight-reverse-proxy:sha-c5d445f345c5da1afc9fc9ee457f5b18ef206e78",
+      "image": "ghcr.io/khu-khlug/sight-reverse-proxy:sha-d80536003577e09f0e0f297576d266a0458690b9",
       "essential": true,
       "portMappings": [
         { "containerPort": 80, "hostPort": 80, "protocol": "tcp" },
         { "containerPort": 443, "hostPort": 443, "protocol": "tcp" }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "caddy-data",
+          "containerPath": "/data"
+        }
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
@@ -21,6 +27,12 @@
           "awslogs-stream-prefix": "ecs"
         }
       }
+    }
+  ],
+  "volumes": [
+    {
+      "name": "caddy-data",
+      "host": { "sourcePath": "/var/lib/caddy-data" }
     }
   ]
 }
