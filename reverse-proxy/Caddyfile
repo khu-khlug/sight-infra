@@ -7,7 +7,13 @@ api.khlug.org {
 	}
 }
 
-v2.khlug.org {
+v2.khlug.org,
+developers.khlug.org,
+hello.khlug.org,
+inventory.khlug.org,
+inven.khlug.org,
+library.khlug.org,
+lib.khlug.org {
 	reverse_proxy {
 		dynamic srv {
 			name laravel-backend.sight.prod
