@@ -16,7 +16,8 @@ api.khlug.org {
 	}
 }
 
-v2.khlug.org,
+http://www.khlug.org,
+http://khlug.org,
 developers.khlug.org,
 hello.khlug.org,
 inventory.khlug.org,
