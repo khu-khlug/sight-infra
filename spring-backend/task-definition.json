@@ -1,0 +1,44 @@
+{
+  "family": "sight-spring-backend",
+  "networkMode": "bridge",
+  "cpu": "768",
+  "memory": "1536",
+  "executionRoleArn": "arn:aws:iam::430044730206:role/ecs-service-parameter-reader-role",
+  "containerDefinitions": [
+    {
+      "name": "sight-spring-backend",
+      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-dbaf61c8adccbe8445a6a4d07983c58710f4e44b",
+      "essential": true,
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "curl -f http://localhost:8080/actuator/health || exit 1"
+        ],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      },
+      "portMappings": [
+        { "containerPort": 8080, "hostPort": 0, "protocol": "tcp" }
+      ],
+      "environment": [
+        { "name": "AUTH_SERVICE_ENDPOINT", "value": "https://khlug.org" }
+      ],
+      "secrets": [
+        {
+          "name": "AUTH_SERVICE_API_KEY",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/internal-api-key"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/sight-spring-backend",
+          "awslogs-region": "ap-northeast-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
