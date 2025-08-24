@@ -1,8 +1,8 @@
 {
   "family": "sight-spring-backend",
   "networkMode": "bridge",
-  "cpu": "768",
-  "memory": "1536",
+  "cpu": "512",
+  "memory": "1024",
   "executionRoleArn": "arn:aws:iam::430044730206:role/ecs-service-parameter-reader-role",
   "containerDefinitions": [
     {
