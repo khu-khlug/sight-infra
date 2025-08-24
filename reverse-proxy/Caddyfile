@@ -16,6 +16,15 @@ api.khlug.org {
 	}
 }
 
+api-v2.khlug.org {
+	reverse_proxy {
+		dynamic srv {
+			name spring-backend.sight.prod
+			refresh 10s
+		}
+	}
+}
+
 www.khlug.org,
 khlug.org,
 developers.khlug.org,
