@@ -7,7 +7,7 @@
   "containerDefinitions": [
     {
       "name": "sight-spring-backend",
-      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-dbaf61c8adccbe8445a6a4d07983c58710f4e44b",
+      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-e0b73c96f9a6af7f4e2a0efece0ec792415d114f",
       "essential": true,
       "healthCheck": {
         "command": [
@@ -23,12 +23,28 @@
         { "containerPort": 8080, "hostPort": 0, "protocol": "tcp" }
       ],
       "environment": [
-        { "name": "AUTH_SERVICE_ENDPOINT", "value": "https://khlug.org" }
+        { "name": "AUTH_SERVICE_ENDPOINT", "value": "https://khlug.org" },
+
+        { "name": "MYSQL_PORT", "value": "3306" },
+        { "name": "MYSQL_DATABASE", "value": "sight" }
       ],
       "secrets": [
         {
           "name": "AUTH_SERVICE_API_KEY",
           "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/internal-api-key"
+        },
+
+        {
+          "name": "MYSQL_HOST",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/mysql-host"
+        },
+        {
+          "name": "MYSQL_USER",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/mysql-user"
+        },
+        {
+          "name": "MYSQL_PASSWORD",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/mysql-password"
         }
       ],
       "logConfiguration": {
