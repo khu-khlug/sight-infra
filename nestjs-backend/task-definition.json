@@ -7,7 +7,7 @@
   "containerDefinitions": [
     {
       "name": "sight-nestjs-backend",
-      "image": "ghcr.io/khu-khlug/sight-nestjs-backend:sha-557b927e980bb9acceb11eb8aea20003f0163080",
+      "image": "ghcr.io/khu-khlug/sight-nestjs-backend:sha-820f0f96e43a7dc6916848536de714e274e1b4d3",
       "essential": true,
       "healthCheck": {
         "command": [
