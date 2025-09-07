@@ -7,7 +7,7 @@
   "containerDefinitions": [
     {
       "name": "sight-spring-backend",
-      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-e0b73c96f9a6af7f4e2a0efece0ec792415d114f",
+      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-8e7ae1a30a731a5b6d3626df34263ae4de334a54",
       "essential": true,
       "healthCheck": {
         "command": [
@@ -26,7 +26,9 @@
         { "name": "AUTH_SERVICE_ENDPOINT", "value": "https://khlug.org" },
 
         { "name": "MYSQL_PORT", "value": "3306" },
-        { "name": "MYSQL_DATABASE", "value": "sight" }
+        { "name": "MYSQL_DATABASE", "value": "sight" },
+
+        { "name": "DISCORD_GUILD_ID", "value": "1343604778059694122" }
       ],
       "secrets": [
         {
@@ -45,6 +47,11 @@
         {
           "name": "MYSQL_PASSWORD",
           "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/mysql-password"
+        },
+
+        {
+          "name": "DISCORD_BOT_TOKEN",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/discord-bot-token"
         }
       ],
       "logConfiguration": {
