@@ -30,7 +30,7 @@
 
         { "name": "DISCORD_GUILD_ID", "value": "1343604778059694122" },
         {
-          "name": "DISCORD_REDIRECT_URL",
+          "name": "DISCORD_REDIRECT_URI",
           "value": "https://api-v2.khlug.org/users/@me/discord-integration/callback"
         }
       ],
