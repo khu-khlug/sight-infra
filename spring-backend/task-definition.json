@@ -7,7 +7,7 @@
   "containerDefinitions": [
     {
       "name": "sight-spring-backend",
-      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-84c54d448a0645bfbab657ec02b0757f73076b28",
+      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-d2bdf34182ac061318d85b6f79b35d9eb907062d",
       "essential": true,
       "healthCheck": {
         "command": [
@@ -28,7 +28,11 @@
         { "name": "MYSQL_PORT", "value": "3306" },
         { "name": "MYSQL_DATABASE", "value": "sight" },
 
-        { "name": "DISCORD_GUILD_ID", "value": "1343604778059694122" }
+        { "name": "DISCORD_GUILD_ID", "value": "1343604778059694122" },
+        {
+          "name": "DISCORD_REDIRECT_URL",
+          "value": "https://api-v2.khlug.org/users/@me/discord-integration/callback"
+        }
       ],
       "secrets": [
         {
@@ -49,6 +53,18 @@
           "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/mysql-password"
         },
 
+        {
+          "name": "DISCORD_CLIENT_ID",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/discord-client-id"
+        },
+        {
+          "name": "DISCORD_CLIENT_SECRET",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/discord-client-secret"
+        },
+        {
+          "name": "DISCORD_STATE_SECRET",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/discord-state-secret"
+        },
         {
           "name": "DISCORD_BOT_TOKEN",
           "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/discord-bot-token"
