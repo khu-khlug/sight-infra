@@ -7,7 +7,7 @@
   "containerDefinitions": [
     {
       "name": "sight-spring-backend",
-      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-628bb566718089c7b04eaf4fcd9b35fcb7c41df1",
+      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-173e5f695c7ae52513540c03488de0144f415313",
       "essential": true,
       "healthCheck": {
         "command": [
@@ -32,7 +32,8 @@
         {
           "name": "DISCORD_REDIRECT_URI",
           "value": "https://api-v2.khlug.org/users/@me/discord-integration/callback"
-        }
+        },
+        { "name": "DISCORD_GROUP_CATEGORY", "value": "1353251103139172444" }
       ],
       "secrets": [
         {
