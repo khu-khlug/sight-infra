@@ -7,7 +7,7 @@
   "containerDefinitions": [
     {
       "name": "sight-spring-backend",
-      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-502bd48ffa07eced3fd09a4a96a6e992ab5d1197",
+      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-628bb566718089c7b04eaf4fcd9b35fcb7c41df1",
       "essential": true,
       "healthCheck": {
         "command": [
@@ -37,6 +37,10 @@
       "secrets": [
         {
           "name": "AUTH_SERVICE_API_KEY",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/internal-api-key"
+        },
+        {
+          "name": "INTERNAL_API_KEY",
           "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/internal-api-key"
         },
 
