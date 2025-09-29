@@ -7,7 +7,7 @@
   "containerDefinitions": [
     {
       "name": "sight-laravel-backend",
-      "image": "ghcr.io/khu-khlug/sight-legacy:sha-566e10cd01e4f584e77f06092e11cb3e23f7cd51",
+      "image": "ghcr.io/khu-khlug/sight-legacy:sha-2f316e4c57bdcd4db2ae9acad7a4360a7cd71e8e",
       "repositoryCredentials": {
         "credentialsParameter": "arn:aws:secretsmanager:ap-northeast-2:430044730206:secret:ecs/github-credentials-vj2fdR"
       },
@@ -60,7 +60,10 @@
         { "name": "R2_BUCKET", "value": "sight-universal" },
 
         { "name": "FILESYSTEM_DRIVER", "value": "r2" },
-        { "name": "AWS_SUPPRESS_PHP_DEPRECATION_WARNING", "value": "true" }
+        { "name": "AWS_SUPPRESS_PHP_DEPRECATION_WARNING", "value": "true" },
+
+        { "name": "API_V2_ENDPOINT", "value": "https://api-v2.khlug.org" },
+        { "name": "DISCORD_GUILD_ID", "value": "1343604778059694122" }
       ],
       "secrets": [
         {
@@ -70,6 +73,10 @@
         {
           "name": "SERVICE_API_KEY",
           "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/service-api-key"
+        },
+        {
+          "name": "INTERNAL_API_KEY",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/laravel/internal-api-key"
         },
 
         {
