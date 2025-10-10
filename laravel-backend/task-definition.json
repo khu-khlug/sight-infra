@@ -28,7 +28,7 @@
         { "name": "APP_ENV", "value": "prod" },
         { "name": "APP_DEBUG", "value": "false" },
         { "name": "APP_LOG", "value": "daily" },
-        { "name": "APP_LOG_LEVEL", "value": "error" },
+        { "name": "APP_LOG_LEVEL", "value": "info" },
         { "name": "APP_URL", "value": "https://khlug.org" },
 
         { "name": "DB_CONNECTION", "value": "mysql" },
