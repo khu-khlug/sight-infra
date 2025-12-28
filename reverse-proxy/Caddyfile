@@ -33,6 +33,27 @@ inventory.khlug.org,
 inven.khlug.org,
 library.khlug.org,
 lib.khlug.org {
+	@cors_preflight {
+		method OPTIONS
+		header Origin "https://app.khlug.org"
+		header Access-Control-Request-Method *
+	}
+
+	handle @cors_preflight {
+		header {
+			Access-Control-Allow-Origin      "https://app.khlug.org"
+			Access-Control-Allow-Methods     "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+			Access-Control-Allow-Headers     *
+			Access-Control-Allow-Credentials "true"
+		}
+		respond "" 204
+	}
+
+	header {
+		Access-Control-Allow-Origin      "https://app.khlug.org"
+		Access-Control-Allow-Credentials "true"
+	}
+
 	reverse_proxy {
 		dynamic srv {
 			name laravel-backend.sight.prod
