@@ -50,7 +50,6 @@ lib.khlug.org {
 	}
 
 	header {
-		Access-Control-Allow-Origin      "https://app.khlug.org"
 		Access-Control-Allow-Credentials "true"
 	}
 
