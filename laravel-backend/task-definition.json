@@ -7,7 +7,7 @@
   "containerDefinitions": [
     {
       "name": "sight-laravel-backend",
-      "image": "ghcr.io/khu-khlug/sight-legacy:sha-dfaaef5c7965d9cdd6f04aea897c879a15c75fef",
+      "image": "ghcr.io/khu-khlug/sight-legacy:sha-8c9def7484d2123ac581bf29404e1a97e18ed233",
       "repositoryCredentials": {
         "credentialsParameter": "arn:aws:secretsmanager:ap-northeast-2:430044730206:secret:ecs/github-credentials-vj2fdR"
       },
