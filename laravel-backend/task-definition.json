@@ -2,7 +2,6 @@
   "family": "sight-laravel-backend",
   "networkMode": "bridge",
   "cpu": "512",
-  "memory": "1024",
   "executionRoleArn": "arn:aws:iam::430044730206:role/ecs-service-parameter-reader-role",
   "containerDefinitions": [
     {
@@ -12,6 +11,7 @@
         "credentialsParameter": "arn:aws:secretsmanager:ap-northeast-2:430044730206:secret:ecs/github-credentials-vj2fdR"
       },
       "essential": true,
+      "memoryReservation": 768,
       "healthCheck": {
         "command": ["CMD-SHELL", "exit 0"],
         "interval": 30,
