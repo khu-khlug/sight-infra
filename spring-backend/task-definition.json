@@ -2,7 +2,6 @@
   "family": "sight-spring-backend",
   "networkMode": "bridge",
   "cpu": "512",
-  "memory": "1024",
   "executionRoleArn": "arn:aws:iam::430044730206:role/ecs-service-parameter-reader-role",
   "containerDefinitions": [
     {
@@ -10,7 +9,6 @@
       "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-2d03c80771a61cda4b4e323f0b593c49ffef41ca",
       "essential": true,
       "memoryReservation": 512,
-      "memory": 1024,
       "healthCheck": {
         "command": [
           "CMD-SHELL",
