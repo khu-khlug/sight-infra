@@ -6,7 +6,7 @@
   "containerDefinitions": [
     {
       "name": "sight-spring-backend",
-      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-adab1fe01d230999569c6bdd52974dcb66dd1e5d",
+      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-2f5fb0c677cd29e39adb6446e65d091c60bd540e",
       "essential": true,
       "memoryReservation": 512,
       "healthCheck": {
@@ -73,6 +73,11 @@
         {
           "name": "DISCORD_BOT_TOKEN",
           "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/discord-bot-token"
+        },
+
+        {
+          "name": "SYSTEM_ALERT_DISCORD_WEBHOOK",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/system-alert-discord-webhook"
         }
       ],
       "logConfiguration": {
