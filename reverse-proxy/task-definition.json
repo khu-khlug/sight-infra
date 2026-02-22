@@ -7,7 +7,7 @@
   "containerDefinitions": [
     {
       "name": "sight-reverse-proxy",
-      "image": "ghcr.io/khu-khlug/sight-reverse-proxy:sha-ede5ca58fb9d3c9b1ba58443f2eb3f74832cc95f",
+      "image": "ghcr.io/khu-khlug/sight-reverse-proxy:sha-3996d91b8c2f95710272813bf61005cc7a221762",
       "essential": true,
       "portMappings": [
         { "containerPort": 80, "hostPort": 80, "protocol": "tcp" },
