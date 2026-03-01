@@ -7,15 +7,6 @@
 	# acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
 }
 
-api.khlug.org {
-	reverse_proxy {
-		dynamic srv {
-			name nestjs-backend.sight.prod
-			refresh 10s
-		}
-	}
-}
-
 api-v2.khlug.org {
 	reverse_proxy {
 		dynamic srv {
