@@ -9,6 +9,9 @@
 
 api-v2.khlug.org {
 	reverse_proxy {
+		# Cloudflare 프록시를 신뢰하여 X-Forwarded-For 헤더를 그대로 전달하게됩니다.
+		# 아래 줄을 컨테이너 시작 시 entrypoint.sh가 Cloudflare IP 대역으로 자동 교체합니다.(https://www.cloudflare.com/ips-v4/)
+		# TRUSTED_PROXIES_CLOUDFLARE_IPS_V4
 		dynamic srv {
 			name spring-backend.sight.prod
 			refresh 10s
