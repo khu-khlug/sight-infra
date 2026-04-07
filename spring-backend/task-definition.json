@@ -78,6 +78,15 @@
         {
           "name": "SYSTEM_ALERT_DISCORD_WEBHOOK",
           "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/system-alert-discord-webhook"
+        },
+
+        {
+          "name": "NAVER_CLIENT_ID",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/naver-client-id"
+        },
+        {
+          "name": "NAVER_CLIENT_SECRET",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/naver-client-secret"
         }
       ],
       "logConfiguration": {
