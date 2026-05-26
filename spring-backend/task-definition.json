@@ -6,7 +6,7 @@
   "containerDefinitions": [
     {
       "name": "sight-spring-backend",
-      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-c51736c093d5ee93b878281546a97c596a685e30",
+      "image": "ghcr.io/khu-khlug/sight-spring-backend:sha-2b9fb4d8c761675a50fe4a488c58bce12ef1864f",
       "essential": true,
       "memoryReservation": 1024,
       "healthCheck": {
