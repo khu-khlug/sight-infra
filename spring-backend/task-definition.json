@@ -87,6 +87,15 @@
         {
           "name": "NAVER_CLIENT_SECRET",
           "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/naver-client-secret"
+        },
+
+        {
+          "name": "STUAUTH_API_URI",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/stuauth-api-uri"
+        },
+        {
+          "name": "STUAUTH_TOKEN",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/stuauth-token"
         }
       ],
       "logConfiguration": {
