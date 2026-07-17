@@ -19,10 +19,7 @@ api-v2.khlug.org {
 	}
 }
 
-khlug.org {
-	redir https://www.khlug.org{uri} permanent
-}
-
+khlug.org,
 before.khlug.org,
 developers.khlug.org,
 hello.khlug.org,
@@ -30,6 +27,13 @@ inventory.khlug.org,
 inven.khlug.org,
 library.khlug.org,
 lib.khlug.org {
+	@khlug_root {
+		host khlug.org
+		path /
+	}
+
+	redir @khlug_root https://www.khlug.org{uri} permanent
+
 	@cors_preflight {
 		method OPTIONS
 		header Origin "https://app.khlug.org"
