@@ -96,6 +96,15 @@
         {
           "name": "STUAUTH_TOKEN",
           "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/stuauth-token"
+        },
+
+        {
+          "name": "SOLAPI_API_KEY",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/solapi-api-key"
+        },
+        {
+          "name": "SOLAPI_API_SECRET",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/solapi-api-secret"
         }
       ],
       "logConfiguration": {
