@@ -24,12 +24,14 @@ flowchart LR
 
 ```
 sight-infra/
+├── landing-deploy-trigger/
 ├── laravel-backend/
 ├── reverse-proxy/
 ├── spring-backend/
 └── README.md
 ```
 
+- `landing-deploy-trigger`: Cloudflare Pages Deploy Hook을 호출해 랜딩 페이지를 주기적으로 재배포하는 단발성 ECS 태스크입니다. 자세한 내용은 [README](./landing-deploy-trigger/README.md)를 참고해주세요.
 - `laravel-backend`: Laravel 백엔드입니다. 레거시 시스템이며, 대부분의 요청을 처리합니다. 자세한 내용은 [README](./laravel-backend/README.md)를 참고해주세요.
 - `reverse-proxy`: 인프라의 가장 앞단에서 요청을 최초로 받는 곳입니다. SSL Termination 및 `Host`에 따른 트래픽 라우팅을 수행합니다. 자세한 내용은 [README](./reverse-proxy/README.md)를 참고해주세요.
 - `spring-backend`: Spring 백엔드입니다. 위 `laravel-backend` 및 `nestjs-backend`의 모든 로직을 해당 백엔드로 점진적으로 옮겨 갈 예정입니다. 자세한 내용은 [README](./spring-backend/README.md)를 참고해주세요.

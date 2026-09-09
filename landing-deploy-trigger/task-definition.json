@@ -1,0 +1,32 @@
+{
+  "family": "sight-landing-deploy-trigger",
+  "networkMode": "bridge",
+  "cpu": "128",
+  "executionRoleArn": "arn:aws:iam::430044730206:role/ecs-service-parameter-reader-role",
+  "containerDefinitions": [
+    {
+      "name": "sight-landing-deploy-trigger",
+      "image": "curlimages/curl:8.21.0",
+      "essential": true,
+      "memoryReservation": 128,
+      "entryPoint": ["/bin/sh", "-ec"],
+      "command": [
+        "curl --fail --silent --show-error --request POST \"$SIGHT_LANDING_DEPLOY_HOOK_URL\""
+      ],
+      "secrets": [
+        {
+          "name": "SIGHT_LANDING_DEPLOY_HOOK_URL",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/landing/cloudflare-deploy-hook-url"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/sight-landing-deploy-trigger",
+          "awslogs-region": "ap-northeast-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
