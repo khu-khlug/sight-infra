@@ -88,6 +88,10 @@
           "name": "NAVER_CLIENT_SECRET",
           "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/naver-client-secret"
         },
+        {
+          "name": "DATA4LIBRARY_AUTH_KEY",
+          "valueFrom": "arn:aws:ssm:ap-northeast-2:430044730206:parameter/app/spring/data4library-auth-key"
+        },
 
         {
           "name": "STUAUTH_API_URI",
