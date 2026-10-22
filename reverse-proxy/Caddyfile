@@ -34,6 +34,13 @@ lib.khlug.org {
 
 	redir @khlug_root https://www.khlug.org{uri} permanent
 
+	@khlug_cdn_images {
+		host khlug.org
+		path /images/favicon.gif /images/with.png /images/about.jpg
+	}
+
+	redir @khlug_cdn_images https://cdn.khlug.org{uri} permanent
+
 	@cors_preflight {
 		method OPTIONS
 		header Origin "https://app.khlug.org"
