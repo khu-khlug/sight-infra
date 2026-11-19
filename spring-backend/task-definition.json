@@ -23,6 +23,8 @@
         { "containerPort": 8080, "hostPort": 0, "protocol": "tcp" }
       ],
       "environment": [
+        { "name": "R2_BUCKET", "value": "sight-universal" },
+        { "name": "R2_ENABLED", "value": "true" },
         { "name": "AUTH_SERVICE_ENDPOINT", "value": "https://khlug.org" },
 
         { "name": "MYSQL_PORT", "value": "3306" },
